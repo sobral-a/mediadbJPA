@@ -25,5 +25,5 @@ public class Profile
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="profile")
-    private ArrayList<Media> medias;
+    private List<Media> medias;
 }

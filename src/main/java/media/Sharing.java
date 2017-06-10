@@ -26,4 +26,8 @@ public class Sharing
     @ManyToOne
     @JoinColumn(name = "user_sharing_id")
     private User userSharing;
+
+    @ManyToOne
+    @JoinColumn(name = "user_share_to_id")
+    private User userShared;
 }

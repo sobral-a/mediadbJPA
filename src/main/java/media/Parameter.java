@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by alexa on 10/06/2017.
@@ -31,9 +32,9 @@ public class Parameter
     private String defaultValue;
 
     @Column
-    private String regexp;
+    private String regxp;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "parameter")
-    private ArrayList<Value> values;
+    private List<Value> values;
 
 }

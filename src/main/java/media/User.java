@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -24,13 +25,13 @@ public class User
     private String email;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
-    private ArrayList<Media> medias;
+    private List<Media> medias = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="userSharing")
-    private ArrayList<Sharing> sharings;
+    private List<Sharing> sharings = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="userShared")
-    private ArrayList<Sharing> shared;
+    private List<Sharing> shared = new ArrayList<>();
 
 
 

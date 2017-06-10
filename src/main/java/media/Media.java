@@ -35,12 +35,12 @@ public class Media
     private Profile profile;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="media")
-    private ArrayList<Value> values;
+    private List<Value> values = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "media")
-    private ArrayList<File> files;
+    private List<File> files = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "media")
-    private ArrayList<Sharing> sharings;
+    private List<Sharing> sharings = new ArrayList<>();
 
 }
