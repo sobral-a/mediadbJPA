@@ -3,16 +3,21 @@ package services;
 import dao.GenericAccess;
 import media.User;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import java.util.List;
 
 /**
  * Created by alexa on 16/06/2017.
  */
+
+@ApplicationScoped
 public class UserService
 {
-    private static GenericAccess<User> userAccess = new GenericAccess<>();
+    @Inject
+    private GenericAccess userAccess;
 
-    public static void add(String login, String email)
+    public void add(String login, String email)
     {
         User user = new User();
         user.setEmail(email);
@@ -20,17 +25,17 @@ public class UserService
         userAccess.add(user);
     }
 
-    public static void delete(Integer id)
+    public void delete(Integer id)
     {
         userAccess.delete(User.class, id);
     }
 
-    public static  User getById(Integer id)
+    public User getById(Integer id)
     {
         return userAccess.getById(User.class, id);
     }
 
-    public static List<User> list()
+    public List<User> list()
     {
         return userAccess.list(new User());
     }
