@@ -1,5 +1,6 @@
 package dao;
 
+import interceptor.Transaction;
 import media.User;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -21,43 +22,32 @@ public class GenericAccess
     @Inject
     private EntityManager em;
 
+    @Transaction
     public <T> void add(T object)
     {
-
-        em.getTransaction().begin();
         em.persist(object);
-        em.getTransaction().commit();
     }
 
+    @Transaction
     public <T> void delete(Class<T> type,Integer id)
     {
 
-        em.getTransaction().begin();
         T obj = em.find(type, id);
         em.remove(obj);
-
-        em.getTransaction().commit();
-
     }
 
+    @Transaction
     public <T> List<T> list(T type)
     {
-        em.getTransaction().begin();
         List<T> list = em.createQuery("Select a from " + type.getClass().getSimpleName()  + " a")
                 .getResultList();
-
-        em.getTransaction().commit();
-
         return list;
     }
 
+    @Transaction
     public <T> T getById(Class<T> type, Integer id)
     {
-        em.getTransaction().begin();
-
         T obj = em.find(type, id);
-        em.getTransaction().commit();
-
         return obj;
     }
 }

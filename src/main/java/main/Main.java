@@ -19,7 +19,7 @@ import org.jboss.weld.environment.se.Weld;
 public class Main {
 
     @Inject
-    EntityManager em;
+    private EntityManager em;
 
     public static void main(String[] args)
     {
@@ -28,8 +28,10 @@ public class Main {
 
         UserService userService = container.select(UserService.class).get();
 
+        userService.add("sobral_r", "sobral_r@epita.fr");
         List<User> users = userService.list();
-
+        User user = userService.getById(2);
+        System.out.println(user.toString());
 
         container.shutdown();
     }
